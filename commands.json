@@ -1,0 +1,103 @@
+{
+  "$schema": "./schema.json",
+  "$comment": "This is your brain's translation table. Add commands here, not in Python.",
+  
+  "ls": {
+    "windows": "dir",
+    "prefer": ["yazi", "lsd", "eza"],
+    "fallback": "dir",
+    "description": "List directory contents"
+  },
+  
+  "cat": {
+    "windows": "type",
+    "prefer": ["bat"],
+    "fallback": "type",
+    "description": "Concatenate and print files"
+  },
+  
+  "cp": {
+    "windows": "copy",
+    "prefer": [],
+    "fallback": "copy",
+    "description": "Copy files"
+  },
+  
+  "mv": {
+    "windows": "move",
+    "prefer": [],
+    "fallback": "move",
+    "description": "Move/rename files"
+  },
+  
+  "rm": {
+    "windows": "del",
+    "prefer": [],
+    "fallback": "del",
+    "description": "Remove files"
+  },
+  
+  "pwd": {
+    "windows": "cd",
+    "prefer": [],
+    "fallback": "cd",
+    "description": "Print working directory"
+  },
+  
+  "clear": {
+    "windows": "cls",
+    "prefer": [],
+    "fallback": "cls",
+    "description": "Clear terminal screen"
+  },
+  
+  "which": {
+    "windows": "where",
+    "prefer": [],
+    "fallback": "where",
+    "description": "Locate a command"
+  },
+  
+  "touch": {
+    "windows": "type nul >",
+    "prefer": [],
+    "fallback": "type nul >",
+    "passArgs": false,
+    "description": "Create empty file"
+  },
+  
+  "grep": {
+    "windows": "findstr",
+    "prefer": ["rg", "grep"],
+    "fallback": "findstr",
+    "description": "Search text patterns"
+  },
+  
+  "head": {
+    "windows": "more",
+    "prefer": ["bat -r :10"],
+    "fallback": "more",
+    "description": "Output first part of files"
+  },
+  
+  "tail": {
+    "windows": "more",
+    "prefer": [],
+    "fallback": "more",
+    "description": "Output last part of files"
+  },
+  
+  "find": {
+    "windows": "dir /s /b",
+    "prefer": ["fd", "fzf"],
+    "fallback": "dir /s /b",
+    "description": "Find files"
+  },
+  
+  "man": {
+    "windows": "help",
+    "prefer": ["tldr"],
+    "fallback": "help",
+    "description": "Manual pages"
+  }
+}
