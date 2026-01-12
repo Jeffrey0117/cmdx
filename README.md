@@ -181,6 +181,15 @@ This project values simplicity over features:
 
 ---
 
+## Related Projects
+
+| Project | Description |
+|---------|-------------|
+| **cmdx** | Unix commands on Windows |
+| [wcmd](https://github.com/Jeffrey0117/wcmd) | Windows commands on Linux |
+
+---
+
 ## License
 
 MIT License

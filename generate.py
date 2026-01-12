@@ -49,7 +49,7 @@ REM ============================================
 def load_config() -> dict:
     """Load and validate commands.json"""
     if not CONFIG_FILE.exists():
-        print(f"❌ Config not found: {CONFIG_FILE}")
+        print(f"[ERROR] Config not found: {CONFIG_FILE}")
         sys.exit(1)
     
     with open(CONFIG_FILE, 'r', encoding='utf-8') as f:
@@ -114,38 +114,38 @@ def generate_bat(name: str, config: dict) -> str:
 def generate_all():
     """Main generation routine"""
     config = load_config()
-    
+
     # Ensure output directory exists
     OUTPUT_DIR.mkdir(exist_ok=True)
-    
-    print(f"📦 shellmap - Generating {len(config)} commands...")
-    print(f"   Source: {CONFIG_FILE}")
-    print(f"   Output: {OUTPUT_DIR}/")
+
+    print(f"[*] cmdx - Generating {len(config)} commands...")
+    print(f"    Source: {CONFIG_FILE}")
+    print(f"    Output: {OUTPUT_DIR}/")
     print()
-    
+
     for name, cmd_config in config.items():
         bat_content = generate_bat(name, cmd_config)
         bat_path = OUTPUT_DIR / f"{name}.bat"
-        
+
         with open(bat_path, 'w', encoding='utf-8') as f:
             f.write(bat_content)
-        
+
         prefer = cmd_config.get('prefer', [])
         fallback = cmd_config.get('fallback', cmd_config.get('windows', ''))
-        
-        prefer_str = f" → {' → '.join(prefer)} →" if prefer else ""
-        print(f"   ✓ {name}.bat{prefer_str} {fallback}")
-    
+
+        prefer_str = f" -> {' -> '.join(prefer)} ->" if prefer else ""
+        print(f"    + {name}.bat{prefer_str} {fallback}")
+
     print()
-    print(f"✅ Done! Add this to your PATH:")
-    print(f"   {OUTPUT_DIR.absolute()}")
+    print(f"[OK] Done! Add this to your PATH:")
+    print(f"     {OUTPUT_DIR.absolute()}")
 
 
 def clean():
     """Remove all generated files"""
     if OUTPUT_DIR.exists():
         shutil.rmtree(OUTPUT_DIR)
-        print(f"🧹 Cleaned: {OUTPUT_DIR}")
+        print(f"[OK] Cleaned: {OUTPUT_DIR}")
     else:
         print("Nothing to clean.")
 
@@ -153,8 +153,8 @@ def clean():
 def list_mappings():
     """Display all mappings in a nice format"""
     config = load_config()
-    
-    print("📋 shellmap - Command Mappings")
+
+    print("[*] cmdx - Command Mappings")
     print("=" * 50)
     
     for name, cmd_config in config.items():

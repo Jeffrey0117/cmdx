@@ -1,103 +1,257 @@
 {
   "$schema": "./schema.json",
-  "$comment": "This is your brain's translation table. Add commands here, not in Python.",
-  
+  "$comment": "cmdx - Unix to Windows command mapping. Add commands here, not in Python.",
+
   "ls": {
-    "windows": "dir",
     "prefer": ["yazi", "lsd", "eza"],
     "fallback": "dir",
     "description": "List directory contents"
   },
-  
+
   "cat": {
-    "windows": "type",
     "prefer": ["bat"],
     "fallback": "type",
     "description": "Concatenate and print files"
   },
-  
+
   "cp": {
-    "windows": "copy",
     "prefer": [],
     "fallback": "copy",
     "description": "Copy files"
   },
-  
+
   "mv": {
-    "windows": "move",
     "prefer": [],
     "fallback": "move",
     "description": "Move/rename files"
   },
-  
+
   "rm": {
-    "windows": "del",
     "prefer": [],
     "fallback": "del",
     "description": "Remove files"
   },
-  
+
   "pwd": {
-    "windows": "cd",
     "prefer": [],
     "fallback": "cd",
     "description": "Print working directory"
   },
-  
+
   "clear": {
-    "windows": "cls",
     "prefer": [],
     "fallback": "cls",
     "description": "Clear terminal screen"
   },
-  
+
   "which": {
-    "windows": "where",
     "prefer": [],
     "fallback": "where",
     "description": "Locate a command"
   },
-  
+
   "touch": {
-    "windows": "type nul >",
     "prefer": [],
     "fallback": "type nul >",
     "passArgs": false,
     "description": "Create empty file"
   },
-  
+
   "grep": {
-    "windows": "findstr",
     "prefer": ["rg", "grep"],
     "fallback": "findstr",
     "description": "Search text patterns"
   },
-  
+
   "head": {
-    "windows": "more",
     "prefer": ["bat -r :10"],
     "fallback": "more",
     "description": "Output first part of files"
   },
-  
+
   "tail": {
-    "windows": "more",
     "prefer": [],
     "fallback": "more",
     "description": "Output last part of files"
   },
-  
+
   "find": {
-    "windows": "dir /s /b",
     "prefer": ["fd", "fzf"],
     "fallback": "dir /s /b",
     "description": "Find files"
   },
-  
+
   "man": {
-    "windows": "help",
     "prefer": ["tldr"],
     "fallback": "help",
     "description": "Manual pages"
+  },
+
+  "df": {
+    "prefer": [],
+    "fallback": "wmic logicaldisk get size,freespace,caption",
+    "description": "Disk space usage"
+  },
+
+  "ps": {
+    "prefer": ["procs"],
+    "fallback": "tasklist",
+    "description": "List running processes"
+  },
+
+  "kill": {
+    "prefer": [],
+    "fallback": "taskkill /PID",
+    "description": "Kill process by PID"
+  },
+
+  "killall": {
+    "prefer": [],
+    "fallback": "taskkill /IM",
+    "description": "Kill process by name"
+  },
+
+  "top": {
+    "prefer": ["btm", "htop"],
+    "fallback": "tasklist /v",
+    "description": "System monitor"
+  },
+
+  "ifconfig": {
+    "prefer": [],
+    "fallback": "ipconfig",
+    "description": "Network interface config"
+  },
+
+  "traceroute": {
+    "prefer": [],
+    "fallback": "tracert",
+    "description": "Trace packet route"
+  },
+
+  "diff": {
+    "prefer": ["delta", "diff"],
+    "fallback": "fc",
+    "description": "Compare files"
+  },
+
+  "less": {
+    "prefer": ["bat", "less"],
+    "fallback": "more",
+    "description": "Page through file"
+  },
+
+  "env": {
+    "prefer": [],
+    "fallback": "set",
+    "description": "Show environment variables"
+  },
+
+  "printenv": {
+    "prefer": [],
+    "fallback": "set",
+    "description": "Print environment variables"
+  },
+
+  "history": {
+    "prefer": [],
+    "fallback": "doskey /history",
+    "description": "Command history"
+  },
+
+  "ln": {
+    "prefer": [],
+    "fallback": "mklink",
+    "description": "Create symbolic link"
+  },
+
+  "reboot": {
+    "prefer": [],
+    "fallback": "shutdown /r /t 0",
+    "description": "Reboot system"
+  },
+
+  "shutdown": {
+    "prefer": [],
+    "fallback": "shutdown /s /t 0",
+    "description": "Shutdown system"
+  },
+
+  "uptime": {
+    "prefer": [],
+    "fallback": "net statistics workstation",
+    "description": "System uptime"
+  },
+
+  "whoami": {
+    "prefer": [],
+    "fallback": "whoami",
+    "description": "Current username"
+  },
+
+  "hostname": {
+    "prefer": [],
+    "fallback": "hostname",
+    "description": "System hostname"
+  },
+
+  "uname": {
+    "prefer": [],
+    "fallback": "ver",
+    "description": "System information"
+  },
+
+  "free": {
+    "prefer": [],
+    "fallback": "systeminfo | findstr Memory",
+    "description": "Memory usage"
+  },
+
+  "du": {
+    "prefer": ["dust", "dua"],
+    "fallback": "dir /s",
+    "description": "Directory disk usage"
+  },
+
+  "wget": {
+    "prefer": ["curl -O", "wget"],
+    "fallback": "curl -O",
+    "description": "Download files"
+  },
+
+  "open": {
+    "prefer": [],
+    "fallback": "start",
+    "description": "Open file with default app"
+  },
+
+  "xdg-open": {
+    "prefer": [],
+    "fallback": "start",
+    "description": "Open file with default app"
+  },
+
+  "pbcopy": {
+    "prefer": [],
+    "fallback": "clip",
+    "description": "Copy to clipboard"
+  },
+
+  "nano": {
+    "prefer": ["nvim", "vim", "nano"],
+    "fallback": "notepad",
+    "description": "Text editor"
+  },
+
+  "vi": {
+    "prefer": ["nvim", "vim"],
+    "fallback": "notepad",
+    "description": "Text editor"
+  },
+
+  "vim": {
+    "prefer": ["nvim", "vim"],
+    "fallback": "notepad",
+    "description": "Text editor"
   }
 }
