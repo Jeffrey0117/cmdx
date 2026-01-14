@@ -181,11 +181,34 @@ This project values simplicity over features:
 
 ---
 
+## Distribution via winbat
+
+Generated `.bat` files can be distributed via [winbat](https://github.com/Jeffrey0117/winbat) — a personal Windows CLI toolkit.
+
+```batch
+# One-liner setup on any Windows machine
+git clone https://github.com/Jeffrey0117/winbat.git C:\dev\winbat
+C:\dev\winbat\install.bat
+```
+
+This gives you:
+- All 42 Unix commands from cmdx
+- Extra tools like `typee` (editor abstraction) and `cc` (Claude Code launcher)
+- Auto-added to PATH
+
+**Workflow:**
+```
+cmdx (generate)  →  winbat (distribute)  →  any Windows machine
+```
+
+---
+
 ## Related Projects
 
 | Project | Description |
 |---------|-------------|
-| **cmdx** | Unix commands on Windows |
+| **cmdx** | Unix commands on Windows (generator) |
+| [winbat](https://github.com/Jeffrey0117/winbat) | Personal CLI toolkit (distribution) |
 | [wcmd](https://github.com/Jeffrey0117/wcmd) | Windows commands on Linux |
 
 ---
